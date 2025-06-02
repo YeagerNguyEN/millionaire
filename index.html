@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ai Là Triệu Phú</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="game-container">
+        <div class="lifelines-container">
+          <button class="lifeline-btn" id="lifeline-5050">
+            50:50
+            <div class="lifeline-cross"></div>
+          </button>
+          <button class="lifeline-btn" id="lifeline-phone">
+            <i class="fa-solid fa-phone"></i>
+            <div class="lifeline-cross"></div>
+          </button>
+          <button class="lifeline-btn" id="lifeline-audience">
+            <i class="fa-solid fa-users"></i>
+            <div class="lifeline-cross"></div>
+          </button>
+        </div>
+
+        <div class="qa-container">
+          <div id="question-box" class="question-box">
+            <span id="question-number"></span>
+            <span id="question-text"></span>
+          </div>
+          <div class="answers-grid">
+            <button class="answer-btn" data-index="0">
+              <span class="answer-prefix">A:</span>
+              <span class="answer-text"></span>
+            </button>
+            <button class="answer-btn" data-index="1">
+              <span class="answer-prefix">B:</span>
+              <span class="answer-text"></span>
+            </button>
+            <button class="answer-btn" data-index="2">
+              <span class="answer-prefix">C:</span>
+              <span class="answer-text"></span>
+            </button>
+            <button class="answer-btn" data-index="3">
+              <span class="answer-prefix">D:</span>
+              <span class="answer-text"></span>
+            </button>
+          </div>
+        </div>
+        <button id="walk-away-btn" class="walk-away-btn">Dừng cuộc chơi</button>
+      </div>
+
+      <div class="prize-container">
+        <ul class="prize-list" id="prize-list"></ul>
+      </div>
+    </div>
+
+    <div id="start-screen" class="modal-overlay show">
+      <div class="modal-content">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/vi/a/a2/Logo_Ai_l%C3%A0_tri%E1%BB%87u_ph%C3%BA_2021.png"
+          alt="Ai Là Triệu Phú Logo"
+          class="logo-image"
+        />
+        <h2>Chào mừng bạn đến với<br />Ai Là Triệu Phú!</h2>
+        <p>
+          Bạn đã sẵn sàng để thử thách kiến thức và rinh về giải thưởng
+          150.000.000 VNĐ chưa?
+        </p>
+        <button id="start-game-btn" class="modal-action-btn">
+          Bắt đầu chơi
+        </button>
+      </div>
+    </div>
+
+    <div id="game-modal" class="modal-overlay">
+      <div class="modal-content" id="modal-content-main">
+        <h2 id="modal-title"></h2>
+        <div id="modal-body"></div>
+        <button id="modal-action-btn" class="modal-action-btn"></button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
