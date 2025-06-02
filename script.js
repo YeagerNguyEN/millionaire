@@ -1,93 +1,181 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- KHAI BÁO BIẾN ---
-  const questions = [
-    {
-      question: "Thủ đô của Việt Nam là gì?",
-      answers: ["TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Hà Nội"],
-      correct: 3,
-    },
-    {
-      question: "Đâu là ngọn núi cao nhất Việt Nam?",
-      answers: ["Pu Si Lung", "Fansipan", "Pu Ta Leng", "Bạch Mộc Lương Tử"],
-      correct: 1,
-    },
-    {
-      question: "Tác giả của 'Bình Ngô đại cáo' là ai?",
-      answers: ["Nguyễn Trãi", "Nguyễn Du", "Hồ Xuân Hương", "Lê Lợi"],
-      correct: 0,
-    },
-    {
-      question: "Trong 12 con giáp, con gì đứng đầu tiên?",
-      answers: ["Trâu", "Rồng", "Tý (Chuột)", "Hổ"],
-      correct: 2,
-    },
-    {
-      question: "Ai là người đầu tiên đặt chân lên mặt trăng?",
-      answers: ["Yuri Gagarin", "Phạm Tuân", "Neil Armstrong", "Buzz Aldrin"],
-      correct: 2,
-    }, // Mốc 1
-    {
-      question: "Hành tinh nào gần Mặt Trời nhất?",
-      answers: ["Sao Kim", "Sao Hỏa", "Sao Thủy", "Trái Đất"],
-      correct: 2,
-    },
-    {
-      question: "Giải Grand Slam đầu tiên trong năm là giải nào?",
-      answers: ["Wimbledon", "Roland Garros", "US Open", "Australian Open"],
-      correct: 3,
-    },
-    {
-      question: "Nền văn minh nào đã xây dựng nên Kim Tự Tháp Giza?",
-      answers: ["La Mã", "Hy Lạp", "Lưỡng Hà", "Ai Cập cổ đại"],
-      correct: 3,
-    },
-    {
-      question: "Tác phẩm 'Mona Lisa' hiện đang được trưng bày ở bảo tàng nào?",
-      answers: ["Prado", "Louvre", "British Museum", "Metropolitan"],
-      correct: 1,
-    },
-    {
-      question:
-        "Vị vua nào của Việt Nam đã cho dời đô từ Hoa Lư về Thăng Long?",
-      answers: [
-        "Lê Đại Hành",
-        "Đinh Tiên Hoàng",
-        "Lý Thái Tổ",
-        "Trần Thái Tông",
-      ],
-      correct: 2,
-    }, // Mốc 2
-    {
-      question: "Đồng tiền chung của Liên Minh Châu Âu (EU) là gì?",
-      answers: ["Pound", "Franc", "Euro", "Dollar"],
-      correct: 2,
-    },
-    {
-      question: "Ngôn ngữ lập trình nào được Brendan Eich tạo ra tại Netscape?",
-      answers: ["Python", "Java", "C++", "JavaScript"],
-      correct: 3,
-    },
-    {
-      question: "Bộ phim nào đã giành giải 'Phim hay nhất' tại Oscar 2020?",
-      answers: [
-        "1917",
-        "Joker",
-        "Parasite (Ký sinh trùng)",
-        "Once Upon a Time in Hollywood",
-      ],
-      correct: 2,
-    },
-    {
-      question: "Nguyên tố hóa học có ký hiệu 'Au' là gì?",
-      answers: ["Bạc", "Đồng", "Sắt", "Vàng"],
-      correct: 3,
-    },
-    {
-      question: "Trong thần thoại Hy Lạp, ai là vua của các vị thần?",
-      answers: ["Apollo", "Poseidon", "Hades", "Zeus"],
-      correct: 3,
-    }, // Câu cuối
-  ];
+  // --- NGÂN HÀNG CÂU HỎI LỚN ---
+  // Bạn có thể thêm bao nhiêu câu hỏi tùy thích vào mỗi cấp độ
+  const questionBank = {
+    easy: [
+      {
+        question: "Thủ đô của Việt Nam là gì?",
+        answers: ["TP. Hồ Chí Minh", "Đà Nẵng", "Hải Phòng", "Hà Nội"],
+        correct: 3,
+      },
+      {
+        question: "Đâu là con sông dài nhất Việt Nam?",
+        answers: ["Sông Hồng", "Sông Cửu Long", "Sông Đồng Nai", "Sông Mã"],
+        correct: 2,
+      },
+      {
+        question: "Tác giả của 'Truyện Kiều' là ai?",
+        answers: [
+          "Hồ Xuân Hương",
+          "Nguyễn Du",
+          "Nguyễn Trãi",
+          "Bà Huyện Thanh Quan",
+        ],
+        correct: 1,
+      },
+      {
+        question: "Màu sắc chủ đạo trên lá cờ Việt Nam là gì?",
+        answers: ["Xanh và Vàng", "Đỏ và Vàng", "Đỏ và Xanh", "Trắng và Đỏ"],
+        correct: 1,
+      },
+      {
+        question: "Món ăn nào là đặc sản nổi tiếng của Hà Nội?",
+        answers: ["Bún Bò Huế", "Hủ tiếu", "Phở", "Mì Quảng"],
+        correct: 2,
+      },
+      {
+        question: "Trong 12 con giáp, con gì đứng cuối cùng?",
+        answers: ["Dậu (Gà)", "Tuất (Chó)", "Hợi (Lợn)", "Mùi (Dê)"],
+        correct: 2,
+      },
+      {
+        question: "Ngày Quốc Khánh của Việt Nam là ngày nào?",
+        answers: ["30/4", "1/5", "2/9", "19/8"],
+        correct: 2,
+      },
+      {
+        question:
+          "Tỉnh nào của Việt Nam được mệnh danh là 'Thành phố ngàn hoa'?",
+        answers: ["Nha Trang", "Đà Lạt", "Sa Pa", "Hạ Long"],
+        correct: 1,
+      },
+    ],
+    medium: [
+      {
+        question: "Đâu là ngọn núi cao nhất Việt Nam?",
+        answers: ["Pu Si Lung", "Fansipan", "Pu Ta Leng", "Bạch Mộc Lương Tử"],
+        correct: 1,
+      },
+      {
+        question: "Ai là người đầu tiên đặt chân lên mặt trăng?",
+        answers: ["Yuri Gagarin", "Phạm Tuân", "Neil Armstrong", "Buzz Aldrin"],
+        correct: 2,
+      },
+      {
+        question: "Quốc gia nào có diện tích lớn nhất thế giới?",
+        answers: ["Canada", "Trung Quốc", "Hoa Kỳ", "Nga"],
+        correct: 3,
+      },
+      {
+        question: "Trong hóa học, nước có công thức hóa học là gì?",
+        answers: ["HO2", "H2O", "CO2", "O2"],
+        correct: 1,
+      },
+      {
+        question: "Bức họa 'Mona Lisa' là tác phẩm của họa sĩ nào?",
+        answers: [
+          "Vincent van Gogh",
+          "Leonardo da Vinci",
+          "Pablo Picasso",
+          "Claude Monet",
+        ],
+        correct: 1,
+      },
+      {
+        question: "Hệ điều hành Android được phát triển bởi công ty nào?",
+        answers: ["Apple", "Microsoft", "Amazon", "Google"],
+        correct: 3,
+      },
+      {
+        question:
+          "Thành phố nào của Nhật Bản đã bị ném bom nguyên tử trong Thế chiến II?",
+        answers: ["Tokyo", "Kyoto", "Osaka", "Hiroshima"],
+        correct: 3,
+      },
+      {
+        question:
+          "Vịnh Hạ Long được UNESCO công nhận là Di sản Thiên nhiên Thế giới mấy lần?",
+        answers: ["1 lần", "2 lần", "3 lần", "4 lần"],
+        correct: 1,
+      },
+    ],
+    hard: [
+      {
+        question: "Nhà vật lý nào đã phát triển Thuyết tương đối rộng?",
+        answers: [
+          "Isaac Newton",
+          "Galileo Galilei",
+          "Albert Einstein",
+          "Niels Bohr",
+        ],
+        correct: 2,
+      },
+      {
+        question: "Giải thưởng Fields được trao cho lĩnh vực nào?",
+        answers: ["Vật lý", "Hóa học", "Y học", "Toán học"],
+        correct: 3,
+      },
+      {
+        question: "Ai là tác giả của bộ tiểu thuyết 'Chiến tranh và Hòa bình'?",
+        answers: [
+          "Fyodor Dostoevsky",
+          "Anton Chekhov",
+          "Leo Tolstoy",
+          "Alexander Pushkin",
+        ],
+        correct: 2,
+      },
+      {
+        question:
+          "Trong vũ trụ, 'Lỗ đen' (Black Hole) được hình thành từ sự suy sụp của cái gì?",
+        answers: [
+          "Một hành tinh",
+          "Một ngôi sao khối lượng lớn",
+          "Một thiên thạch",
+          "Một đám mây khí",
+        ],
+        correct: 1,
+      },
+      {
+        question: "Ngôn ngữ lập trình Python được đặt tên theo cái gì?",
+        answers: [
+          "Một loài rắn",
+          "Một chương trình TV",
+          "Tên của người tạo ra nó",
+          "Một ngọn núi",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "Sự kiện nào được xem là đã châm ngòi cho Chiến tranh thế giới thứ nhất?",
+        answers: [
+          "Trận Trân Châu Cảng",
+          "Vụ ám sát thái tử Áo-Hung",
+          "Đức xâm lược Ba Lan",
+          "Cách mạng tháng Mười Nga",
+        ],
+        correct: 1,
+      },
+      {
+        question:
+          "Thành Cổ Loa, kinh đô của nhà nước Âu Lạc, gắn liền với truyền thuyết về vị vua nào?",
+        answers: [
+          "Lạc Long Quân",
+          "Vua Hùng",
+          "An Dương Vương",
+          "Hai Bà Trưng",
+        ],
+        correct: 2,
+      },
+      {
+        question:
+          "Bộ phim nào của Việt Nam lần đầu tiên được đề cử giải Oscar cho Phim quốc tế hay nhất?",
+        answers: ["Hai Phượng", "Mắt Biếc", "Bố Già", "Mùi Đu Đủ Xanh"],
+        correct: 3,
+      },
+    ],
+  };
 
   const prizeMoney = [
     "200.000",
@@ -107,34 +195,62 @@ document.addEventListener("DOMContentLoaded", () => {
     "150.000.000",
   ];
 
+  const sounds = {
+    letsPlay: new Audio("sounds/lets-play.mp3"),
+    correct: new Audio("sounds/correct.mp3"),
+    incorrect: new Audio("sounds/incorrect.mp3"),
+    suspense: new Audio("sounds/suspense.mp3"),
+    win: new Audio("sounds/win.mp3"),
+  };
+  sounds.suspense.loop = true;
+
+  let currentGameQuestions = [];
   let currentQuestionIndex = 0;
   let gameActive = false;
-  let lifelines = {
-    fiftyFifty: false,
-    phone: false,
-    audience: false,
-  };
+  let lifelines = { fiftyFifty: false, phone: false, audience: false };
 
   // --- LẤY CÁC PHẦN TỬ DOM ---
   const questionTextEl = document.getElementById("question-text");
   const questionNumberEl = document.getElementById("question-number");
   const answerButtons = document.querySelectorAll(".answer-btn");
   const prizeListEl = document.getElementById("prize-list");
-
   const startScreen = document.getElementById("start-screen");
   const startGameBtn = document.getElementById("start-game-btn");
-
   const modal = document.getElementById("game-modal");
   const modalTitle = document.getElementById("modal-title");
   const modalBody = document.getElementById("modal-body");
   const modalActionBtn = document.getElementById("modal-action-btn");
-
   const lifeline5050Btn = document.getElementById("lifeline-5050");
   const lifelinePhoneBtn = document.getElementById("lifeline-phone");
   const lifelineAudienceBtn = document.getElementById("lifeline-audience");
   const walkAwayBtn = document.getElementById("walk-away-btn");
 
   // --- CÁC HÀM XỬ LÝ GAME ---
+
+  function stopAllSounds() {
+    for (const sound in sounds) {
+      sounds[sound].pause();
+      sounds[sound].currentTime = 0;
+    }
+  }
+
+  // *** NEW: Hàm lấy câu hỏi ngẫu nhiên ***
+  function pickRandomQuestions(sourceArray, count) {
+    const shuffled = [...sourceArray].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+
+  // *** NEW: Hàm tạo bộ câu hỏi cho lượt chơi mới ***
+  function generateGameQuestions() {
+    const easyQuestions = pickRandomQuestions(questionBank.easy, 5);
+    const mediumQuestions = pickRandomQuestions(questionBank.medium, 5);
+    const hardQuestions = pickRandomQuestions(questionBank.hard, 5);
+    currentGameQuestions = [
+      ...easyQuestions,
+      ...mediumQuestions,
+      ...hardQuestions,
+    ];
+  }
 
   function initPrizeList() {
     prizeListEl.innerHTML = "";
@@ -165,6 +281,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function startGame() {
+    stopAllSounds();
+    sounds.letsPlay.play();
+
+    generateGameQuestions(); // *** MODIFIED: Tạo câu hỏi mới khi bắt đầu
+
     currentQuestionIndex = 0;
     gameActive = true;
     lifelines = { fiftyFifty: false, phone: false, audience: false };
@@ -174,13 +295,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayQuestion() {
-    if (currentQuestionIndex >= questions.length) {
+    if (currentQuestionIndex >= currentGameQuestions.length) {
       winGame();
       return;
     }
 
     resetAnswerButtons();
-    const q = questions[currentQuestionIndex];
+    const q = currentGameQuestions[currentQuestionIndex]; // *** MODIFIED: Dùng mảng câu hỏi của lượt chơi
     questionNumberEl.textContent = `Câu ${currentQuestionIndex + 1}:`;
     questionTextEl.textContent = q.question;
 
@@ -204,23 +325,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const selectedBtn = e.currentTarget;
     const selectedIndex = parseInt(selectedBtn.dataset.index);
-    const correctIndex = questions[currentQuestionIndex].correct;
+    const correctIndex = currentGameQuestions[currentQuestionIndex].correct; // *** MODIFIED
 
-    gameActive = false; // Ngăn chặn các click khác
+    gameActive = false;
     selectedBtn.classList.add("selected");
+    sounds.suspense.play();
 
     setTimeout(() => {
+      stopAllSounds();
       if (selectedIndex === correctIndex) {
+        sounds.correct.play();
         selectedBtn.classList.remove("selected");
         selectedBtn.classList.add("correct");
         setTimeout(correctAnswer, 2000);
       } else {
+        sounds.incorrect.play();
         selectedBtn.classList.remove("selected");
         selectedBtn.classList.add("incorrect");
         answerButtons[correctIndex].classList.add("correct");
         setTimeout(gameOver, 2000);
       }
-    }, 3000);
+    }, 5000);
   }
 
   function correctAnswer() {
@@ -230,8 +355,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function getSafePrize() {
-    if (currentQuestionIndex >= 10) return prizeMoney[9]; // Mốc 22.000.000
-    if (currentQuestionIndex >= 5) return prizeMoney[4]; // Mốc 2.000.000
+    if (currentQuestionIndex >= 10) return prizeMoney[9];
+    if (currentQuestionIndex >= 5) return prizeMoney[4];
     return "0";
   }
 
@@ -242,18 +367,21 @@ document.addEventListener("DOMContentLoaded", () => {
     modalActionBtn.textContent = "Chơi lại";
     modalActionBtn.onclick = () => {
       modal.classList.remove("show");
-      startGame();
+      // Không cần gọi startGame() ở đây, nó sẽ được gọi từ startScreen
+      startScreen.classList.add("show");
     };
     modal.classList.add("show");
   }
 
   function winGame() {
+    stopAllSounds();
+    sounds.win.play();
     modalTitle.textContent = "XIN CHÚC MỪNG!";
     modalBody.innerHTML = `<p>Bạn đã trở thành TRIỆU PHÚ!</p><p>Bạn đã xuất sắc vượt qua 15 câu hỏi và giành được giải thưởng cao nhất:</p><h2>${prizeMoney[14]} VNĐ</h2>`;
     modalActionBtn.textContent = "Chơi lại";
     modalActionBtn.onclick = () => {
       modal.classList.remove("show");
-      startGame();
+      startScreen.classList.add("show");
     };
     modal.classList.add("show");
   }
@@ -266,12 +394,10 @@ document.addEventListener("DOMContentLoaded", () => {
     modalActionBtn.textContent = "Chơi lại từ đầu";
     modalActionBtn.onclick = () => {
       modal.classList.remove("show");
-      startGame();
+      startScreen.classList.add("show");
     };
     modal.classList.add("show");
   }
-
-  // --- HÀM XỬ LÝ TRỢ GIÚP ---
 
   function updateLifelineButtons() {
     lifeline5050Btn.disabled = lifelines.fiftyFifty;
@@ -283,11 +409,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function useFiftyFifty() {
-    if (lifelines.fiftyFifty) return;
+    if (lifelines.fiftyFifty || !gameActive) return;
     lifelines.fiftyFifty = true;
     updateLifelineButtons();
 
-    const correctIndex = questions[currentQuestionIndex].correct;
+    const correctIndex = currentGameQuestions[currentQuestionIndex].correct; // *** MODIFIED
     let removedCount = 0;
     const indexesToRemove = [];
     while (removedCount < 2) {
@@ -307,24 +433,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function usePhoneAFriend() {
-    if (lifelines.phone) return;
+    if (lifelines.phone || !gameActive) return;
     lifelines.phone = true;
     updateLifelineButtons();
 
     modalTitle.textContent = "Gọi điện thoại cho người thân";
     let timeLeft = 30;
     modalBody.innerHTML = `<p>Đang kết nối với chuyên gia...</p><div id="phone-timer">${timeLeft}</div>`;
-    modalActionBtn.style.display = "none"; // Hide button during countdown
+    modalActionBtn.style.display = "none";
     modal.classList.add("show");
 
     const timer = setInterval(() => {
       timeLeft--;
-      document.getElementById("phone-timer").textContent = timeLeft;
+      const timerEl = document.getElementById("phone-timer");
+      if (timerEl) timerEl.textContent = timeLeft;
       if (timeLeft <= 0) {
         clearInterval(timer);
-        const correctIndex = questions[currentQuestionIndex].correct;
+        const correctIndex = currentGameQuestions[currentQuestionIndex].correct; // *** MODIFIED
         const choices = ["A", "B", "C", "D"];
-        // 80% chance of being correct
         const friendsAnswer =
           Math.random() < 0.8
             ? choices[correctIndex]
@@ -338,27 +464,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function useAskTheAudience() {
-    if (lifelines.audience) return;
+    if (lifelines.audience || !gameActive) return;
     lifelines.audience = true;
     updateLifelineButtons();
 
-    const correctIndex = questions[currentQuestionIndex].correct;
+    const correctIndex = currentGameQuestions[currentQuestionIndex].correct; // *** MODIFIED
     let percentages = [0, 0, 0, 0];
     let remaining = 100;
 
-    // Give the correct answer a large chunk
-    const correctPercent = 40 + Math.floor(Math.random() * 30); // 40-70%
+    const correctPercent = 40 + Math.floor(Math.random() * 30);
     percentages[correctIndex] = correctPercent;
     remaining -= correctPercent;
 
-    // Distribute the rest among others
-    for (let i = 0; i < 3; i++) {
-      const randomPercent = Math.floor(Math.random() * remaining);
-      let index = (correctIndex + 1 + i) % 4;
-      percentages[index] = randomPercent;
-      remaining -= randomPercent;
-    }
-    percentages[percentages.indexOf(0)] += remaining; // Give remainder to one of the others
+    let otherIndexes = [0, 1, 2, 3].filter((i) => i !== correctIndex);
+    otherIndexes.forEach((index, i) => {
+      if (i < 2) {
+        const randomPercent = Math.floor(Math.random() * remaining);
+        percentages[index] = randomPercent;
+        remaining -= randomPercent;
+      } else {
+        percentages[index] = remaining;
+      }
+    });
+
+    percentages.sort(() => 0.5 - Math.random());
 
     modalTitle.textContent = "Hỏi ý kiến khán giả";
     modalBody.innerHTML = `
